@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import Form from './Form';
+import List from './List';
+import Table from './Table';
 
 function App() {
   const API_URL = 'https://jsonplaceholder.typicode.com/';
@@ -10,6 +13,7 @@ function App() {
       try {
         const response = await fetch(`${API_URL}${reqType}`);
         const json = await response.json();
+        console.log(json);
         setData(json);
       } catch(error) {
         console.log(error);
@@ -24,7 +28,8 @@ function App() {
         reqType={reqType}
         setReqType={setReqType}
       />
-
+    <List data={data} />
+    <Table data={data} />
     </div>
   );
 }
